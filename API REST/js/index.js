@@ -6,9 +6,9 @@ let pagina = 1;
 const obtenerPersonajes = async() => {
     try {
         // funcion fetch trae una promesa y la esperamos con await
-        const respuesta = await fetch(`https://rickandortyapi.com/api/character?page=${ pagina }`);
+        const respuesta = await fetch(`https://rickandmortyapi.com/api/character?page=${ pagina }`);
         const data = await respuesta.json();
-        console.log(data.results);
+        console.log(data);
         contenedor.innerHTML = '';
         data.results.forEach(personaje => {
             contenedor.innerHTML += `
