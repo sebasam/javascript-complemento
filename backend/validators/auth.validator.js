@@ -13,6 +13,8 @@ const registerValidator = [
         .isStrongPassword().withMessage('La contraseña debe tener mínimo 8 caracteres, mayúsculas, minúsculas, números y caracter especial.')
 ];
 
+
+
 module.exports = {
     registerValidator
 }
