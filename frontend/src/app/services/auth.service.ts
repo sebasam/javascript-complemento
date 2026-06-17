@@ -17,4 +17,20 @@ export class AuthService {
       usuario
     )
   }
+
+  login(credenciales: Pick<User, "email" | "password">): Observable<any> {
+    return this.http.post(
+      `
+        ${ this.api }/auth/login`,
+        credenciales
+    )
+  }
+
+  guardarToken(token: string): void {
+    sessionStorage.setItem('token', token);
+  }
+
+  obtenerToken(): string | null {
+    return sessionStorage.getItem('token');
+  }
 }
