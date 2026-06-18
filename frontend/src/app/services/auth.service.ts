@@ -30,7 +30,16 @@ export class AuthService {
     sessionStorage.setItem('token', token);
   }
 
-  obtenerToken(): string | null {
-    return sessionStorage.getItem('token');
+  estaAutenticado(): boolean {
+    const token = sessionStorage.getItem('token')
+    if(token) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('token');
   }
 }

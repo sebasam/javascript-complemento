@@ -54,9 +54,8 @@ export class LoginComponent {
       .subscribe({
         next: (respuesta) => {
           alert('Iniciaste sesion');
-          console.log(respuesta.token);
-          // this.authService.guardarToken(respuesta.token);
-          console.log(this.authService.obtenerToken())
+          this.authService.guardarToken(respuesta.token);
+          this.router.navigate(['/tasks'])
         },
         error: (error) => {
           this.error = error.error.msg || 'Error al iniciar sesión';
