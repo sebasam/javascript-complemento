@@ -1,1 +1,115 @@
-<p>tasks works!</p>
+<div class="container mt-4">
+
+  <div class="row mb-4">
+
+    <div class="col">
+
+      <h2>
+        Mis Tareas
+      </h2>
+
+    </div>
+
+  </div>
+
+  <div class="card shadow mb-4">
+
+    <div class="card-body">
+
+      <h5>
+        Nueva Tarea
+      </h5>
+      <form
+        [formGroup]="taskForm"
+        (ngSubmit)="crearTarea()"
+      >
+        <div class="row">
+            <div class="col-md-10">
+
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Ingrese una tarea"
+                formControlName="titulo">
+
+            <small
+                class="text-danger"
+                *ngIf="
+                    taskForm.get('titulo')?.touched &&
+                    taskForm.get('titulo')?.invalid
+                "
+            >
+                El titulo es obligatorio y debe tener minimo 3 caracteres
+            </small>
+                
+            </div>
+
+            <div class="col-md-2">
+
+            <button
+                class="btn btn-success w-100"
+                type="submit">
+
+                Crear
+
+            </button>
+
+            </div>
+
+        </div>
+    </form>
+      
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div 
+        class="alert alert-danger"
+        *ngIf="tasks.length === 0"
+    >
+        No tienes tareas registradas
+    </div>
+    <div 
+        class="col-md-4 mb-3"
+        *ngFor="let task of tasks"
+    >
+        <div
+            class="card shadow-sm h-100"
+            style="cursor: pointer;"
+        >
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{ task.titulo }}
+                </h5>
+                <p
+                    *ngIf="task.completado"
+                    class="badge bg-success"
+                >
+                    Completada
+                </p>
+                <p
+                    *ngIf="!task.completado"
+                    class="badge bg-warning"
+                >
+                    Pendiente
+                </p>
+                <!-- <p class="text-muted mb-0">
+                    click para ver detalle
+                </p> -->
+                <button
+                    class="btn btn-success btn-sm"
+                    (click)="completarTarea(task)"
+                >
+                    {{
+                        task.completado ? 'Reabrir' : 'Completar'
+                    }}
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
