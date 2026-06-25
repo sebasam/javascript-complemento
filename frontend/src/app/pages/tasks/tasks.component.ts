@@ -29,6 +29,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerTareas();
+    console.log(this.tasks)
   }
 
   obtenerTareas(): void {
@@ -77,5 +78,18 @@ export class TasksComponent implements OnInit {
         console.error(error)
       }
     })
+  }
+
+  eliminarTarea(id: string | undefined) : void {
+    this.taskService.eliminarTarea(id)
+                    .subscribe({
+                      next: () => {
+                        alert('Eliminaste la tarea')
+                        this.obtenerTareas();
+                      },
+                      error: (error) => {
+                        console.log(error);
+                      }
+                    })
   }
 }

@@ -53,4 +53,15 @@ export class TaskService {
       }
     )
   }
+
+  eliminarTarea(
+    id: string | undefined 
+  ) : Observable<any> {
+    return this.http.delete(
+      `${ this.api }/${ id }`,
+      {
+        headers: this.obtenerHeaders()
+      }
+    )
+  }
 }

@@ -107,6 +107,12 @@
                         task.completado ? 'Reabrir' : 'Completar'
                     }}
                 </button>
+                <button
+                    class="btn btn-danger btn-sm"
+                    (click)="eliminarTarea(task._id)"
+                >
+                    Eliminar tarea
+                </button>
             </div>
         </div>
     </div>
